@@ -16,7 +16,7 @@ data <- read.csv("activity.csv")
 
 ## What is mean total number of steps taken per day?
 
-1. Making a histogram of the total number of steps taken each day.
+Making a histogram of the total number of steps taken each day.
 
 ```r
 library(ggplot2)
@@ -30,7 +30,7 @@ plot(hg)
 
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
-2. Calculating the mean and median total number of steps taken per day.
+Calculating the mean and median total number of steps taken per day.
 
 ```r
 mean(dailySteps$steps)
@@ -50,7 +50,7 @@ median(dailySteps$steps)
 
 ## What is the average daily activity pattern?
 
-1. Makeing a time series plot of the 5-minute interval (x-axis)
+Makeing a time series plot of the 5-minute interval (x-axis)
 and the average number of steps taken, averaged across all days (y-axis)
 
 ```r
@@ -64,7 +64,7 @@ plot(ts)
 
 ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
-2. Finding which 5-minute interval contains the maximum number of steps.
+Finding which 5-minute interval contains the maximum number of steps.
 
 ```r
 stepsPerInterval[which.max(stepsPerInterval$steps),]$interval
@@ -76,7 +76,7 @@ stepsPerInterval[which.max(stepsPerInterval$steps),]$interval
 
 ## Imputing missing values
 
-1. Calculating the total number of missing values in the dataset.
+Calculating the total number of missing values in the dataset.
 
 ```r
 sum(is.na(data$steps))
@@ -86,10 +86,9 @@ sum(is.na(data$steps))
 ## [1] 2304
 ```
 
-2. To fill in the missing values, I used the mean for the 5-minute interval.
-
-3. Creating a new dataset that is equal to original dataset
+Creating a new dataset that is equal to original dataset
 but with the missing values filled in.
+To fill in the missing values, I used the mean for the 5-minute interval.
 
 ```r
 datafill <- data
@@ -101,7 +100,7 @@ for (i in 1:n) {
 }
 ```
 
-4. Making a histogram of the total number of steps taken each day.
+Making a histogram of the total number of steps taken each day.
 
 ```r
 dailySteps <- aggregate(steps ~ date, data=datafill, sum)
@@ -134,7 +133,7 @@ median(dailySteps$steps)
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-1. Creating a new factor variable in the dataset with
+Creating a new factor variable in the dataset with
 two levels -- "weekday" and "weekend" indicating whether a given date is
 a weekday or weekend day.
 
@@ -155,7 +154,7 @@ head(data)
 ## 6    NA 2012-10-01       25 weekday
 ```
 
-2. Making a panel plot containing a time series plot of the
+Making a panel plot containing a time series plot of the
 5-minute interval (x-axis) and the average number of steps taken,
 averaged across all weekday days or weekend days (y-axis).
 
